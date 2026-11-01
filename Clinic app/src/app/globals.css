@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f7f6;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --color-primary: #0f766e;
+  --color-primary-hover: #115e59;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  transition: 160ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+.hero-grid {
+  background-color: #f0fdfa;
+  background-image:
+    linear-gradient(rgba(13, 148, 136, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 148, 136, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.card {
+  @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-sm;
+}
+
+.field {
+  @apply mt-2 min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-normal outline-none focus:border-teal-700 focus:ring-2 focus:ring-teal-700/15;
+}
+
+.form-label {
+  @apply block text-sm font-bold text-slate-700;
+}
+
+.button-primary {
+  @apply inline-flex min-h-11 items-center justify-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.button-secondary {
+  @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:border-teal-700 hover:text-teal-800;
+}
+
+.button-danger {
+  @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-bold text-red-700 hover:bg-red-100;
+}
+
+.dashboard-shell {
+  @apply mx-auto w-full max-w-6xl px-4 py-10;
+}
+
+.page-title {
+  @apply text-3xl font-black tracking-tight text-slate-950;
+}
+
+.eyebrow {
+  @apply mb-1 text-xs font-black tracking-[0.16em] text-teal-700 uppercase;
+}
+
+.nav-link {
+  @apply rounded-xl px-3 py-2 text-slate-600 hover:bg-teal-50 hover:text-teal-800;
+}
+
+.metric {
+  @apply rounded-3xl border border-slate-200 bg-white p-5 shadow-sm;
+}
+
+.metric p {
+  @apply text-sm font-semibold text-slate-500;
+}
+
+.metric strong {
+  @apply mt-2 block text-4xl font-black text-slate-950;
+}
+
+.status {
+  @apply inline-flex rounded-full px-2.5 py-1 text-xs font-black capitalize;
+}
+
+.status-pending {
+  @apply bg-amber-100 text-amber-800;
+}
+.status-confirmed {
+  @apply bg-emerald-100 text-emerald-800;
+}
+.status-cancelled {
+  @apply bg-red-100 text-red-700;
+}
+.status-completed {
+  @apply bg-slate-200 text-slate-700;
+}
+
+/* DoctorOne portal — scoped shared product system */
+.doctor-portal {
+  --portal-primary: #0f766e;
+  --portal-primary-dark: #115e59;
+}
+
+.portal-page {
+  @apply mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8;
+}
+
+.portal-eyebrow {
+  @apply mb-1 text-xs font-black tracking-[0.14em] text-teal-700 uppercase;
+}
+
+.portal-title {
+  @apply text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-4xl;
+}
+
+.portal-card {
+  @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,.04)] sm:p-6;
+}
+
+.portal-label {
+  @apply text-xs font-bold tracking-wide text-slate-500 uppercase;
+}
+
+.portal-button-primary,
+.portal-button-secondary,
+.portal-button-quiet {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-sm font-black disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.portal-button-primary {
+  @apply bg-teal-700 text-white shadow-sm hover:bg-teal-800;
+}
+
+.portal-button-secondary {
+  @apply border border-slate-300 bg-white text-slate-800 hover:border-teal-700 hover:text-teal-800;
+}
+
+.portal-button-quiet {
+  @apply text-slate-600 hover:bg-slate-100 hover:text-slate-950;
+}
+
+.portal-icon-button {
+  @apply relative grid size-11 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-teal-700 hover:text-teal-800;
+}
+
+.portal-section-head {
+  @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.portal-section-head h2 {
+  @apply text-lg font-black;
+}
+
+.portal-section-head p {
+  @apply mt-1 text-sm text-slate-500;
+}
+
+.portal-section-head a {
+  @apply text-sm font-bold text-teal-700 hover:text-teal-900;
+}
+
+.portal-input {
+  @apply mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none placeholder:text-slate-400 focus:border-teal-700 focus:ring-3 focus:ring-teal-700/10;
+}
+
+.portal-field {
+  @apply text-sm font-bold text-slate-700;
+}
+
+.portal-tabs {
+  @apply flex max-w-full gap-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-1;
+}
+
+.portal-tabs button {
+  @apply inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-4 text-sm font-bold text-slate-600 hover:bg-slate-50;
+}
+
+.portal-tabs button.active {
+  @apply bg-teal-700 text-white;
+}
+
+.portal-tabs button span {
+  @apply grid size-5 place-items-center rounded-full bg-white/20 text-[11px];
+}
+
+@media (max-width: 639px) {
+  .portal-button-primary,
+  .portal-button-secondary,
+  .portal-button-quiet {
+    @apply min-h-12;
+  }
+}
