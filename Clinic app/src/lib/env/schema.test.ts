@@ -4,7 +4,7 @@ import { publicEnvSchema, serverEnvSchema } from "@/lib/env/schema";
 
 const validPublicEnv = {
   NEXT_PUBLIC_SUPABASE_URL: "https://example.supabase.co",
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: "public-anon-key",
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_example",
 };
 
 describe("environment schemas", () => {
@@ -24,7 +24,7 @@ describe("environment schemas", () => {
   it("parses server flags and allows absent WhatsApp credentials", () => {
     const result = serverEnvSchema.parse({
       ...validPublicEnv,
-      SUPABASE_SERVICE_ROLE_KEY: "service-role-key",
+      SUPABASE_SECRET_KEY: "sb_secret_example",
       WHATSAPP_TEST_MODE: "true",
       APP_URL: "http://localhost:3000",
     });
@@ -33,7 +33,7 @@ describe("environment schemas", () => {
     expect(result.WHATSAPP_TOKEN).toBeUndefined();
   });
 
-  it("rejects a missing service-role key", () => {
+  it("rejects a missing server secret key", () => {
     expect(() =>
       serverEnvSchema.parse({
         ...validPublicEnv,
