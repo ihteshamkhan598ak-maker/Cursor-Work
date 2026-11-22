@@ -2,8 +2,6 @@ import { requireClinic } from "@/lib/clinic/auth";
 import { DashboardNav } from "@/components/dashboard-nav";
 import { updateClinic } from "../actions";
 
-export const instant = false;
-
 export default async function SettingsPage({
   searchParams,
 }: {

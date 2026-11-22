@@ -2,7 +2,6 @@ import { requireClinic } from "@/lib/clinic/auth";
 import { DashboardNav } from "@/components/dashboard-nav";
 import { createDoctor, saveSchedule, toggleDoctor } from "../actions";
 
-export const instant = false;
 const specialties = [
   "general",
   "children",

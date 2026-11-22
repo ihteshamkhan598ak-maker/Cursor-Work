@@ -1,8 +1,6 @@
 import { AuthForm } from "@/components/auth-form";
 import { signup } from "../auth-actions";
 
-export const instant = false;
-
 export default async function SignupPage({
   searchParams,
 }: {

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { requireClinic } from "@/lib/clinic/auth";
 import { DashboardNav } from "@/components/dashboard-nav";
 
-export const instant = false;
 const statusLabels: Record<string, string> = {
   pending: "Pending",
   confirmed: "Confirm",

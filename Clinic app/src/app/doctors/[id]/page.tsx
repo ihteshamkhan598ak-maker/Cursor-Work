@@ -27,8 +27,6 @@ const specialtyLabels: Record<string, string> = {
   other: "Other",
 };
 
-export const instant = false;
-
 export default async function DoctorPage({
   params,
 }: {

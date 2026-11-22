@@ -1,8 +1,6 @@
 import { AuthForm } from "@/components/auth-form";
 import { login } from "../auth-actions";
 
-export const instant = false;
-
 export default async function LoginPage({
   searchParams,
 }: {

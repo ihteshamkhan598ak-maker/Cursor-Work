@@ -1,7 +1,5 @@
 import { createClinic } from "./actions";
 
-export const instant = false;
-
 export default async function OnboardingPage({
   searchParams,
 }: {

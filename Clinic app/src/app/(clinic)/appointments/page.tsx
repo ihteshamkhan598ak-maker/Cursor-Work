@@ -4,7 +4,6 @@ import { DashboardNav } from "@/components/dashboard-nav";
 import { connection } from "next/server";
 import { changeAppointmentStatus } from "../actions";
 
-export const instant = false;
 const PAGE_SIZE = 25;
 
 const statusLabels: Record<string, string> = {

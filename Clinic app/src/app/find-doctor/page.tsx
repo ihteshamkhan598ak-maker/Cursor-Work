@@ -15,8 +15,6 @@ const labels: Record<string, string> = {
   other: "Other",
 };
 
-export const instant = false;
-
 export default async function FindDoctorPage({
   searchParams,
 }: {
