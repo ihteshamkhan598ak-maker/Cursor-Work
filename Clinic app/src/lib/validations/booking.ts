@@ -16,6 +16,7 @@ export const bookingSchema = z.object({
   doctorId: postgresUuidSchema,
   patientName: z.string().trim().min(2).max(120),
   patientPhone: pakistanPhoneSchema,
+  patientEmail: z.email("Enter a valid email address."),
   appointmentDate: z.iso.date(),
   startTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
   note: z.string().trim().max(500).optional(),

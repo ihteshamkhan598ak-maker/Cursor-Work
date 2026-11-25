@@ -15,6 +15,8 @@ export const serverEnvSchema = publicEnvSchema.extend({
     .enum(["true", "false"])
     .default("true")
     .transform((value) => value === "true"),
+  RESEND_API_KEY: optionalSecret,
+  RESEND_FROM_EMAIL: z.email().optional(),
   APP_URL: z.url(),
 });
 

@@ -12,6 +12,7 @@ import {
 } from "@/lib/validations/booking";
 import { clinicProfileSchema } from "@/lib/validations/auth";
 import { sendAppointmentNotice } from "@/lib/whatsapp/send";
+import { sendAppointmentEmails } from "@/lib/email/send";
 
 export async function createDoctor(formData: FormData) {
   const values = doctorSchema.safeParse({
@@ -97,7 +98,7 @@ export async function changeAppointmentStatus(
   const { data: appointment } = await admin
     .from("appointments")
     .select(
-      "id, doctor_id, patient_name, patient_phone, appointment_date, start_time, status",
+      "id, doctor_id, patient_name, patient_phone, patient_email, appointment_date, start_time, status",
     )
     .eq("id", appointmentId)
     .eq("clinic_id", clinic.id)
@@ -126,6 +127,16 @@ export async function changeAppointmentStatus(
         phone: appointment.patient_phone,
         template,
         patientName: appointment.patient_name,
+        doctorName: doctor?.name ?? "your doctor",
+        date: appointment.appointment_date,
+        time: appointment.start_time.slice(0, 5),
+      });
+      await sendAppointmentEmails({
+        appointmentId: appointment.id,
+        template,
+        patientName: appointment.patient_name,
+        patientEmail: appointment.patient_email,
+        clinicName: clinic.name,
         doctorName: doctor?.name ?? "your doctor",
         date: appointment.appointment_date,
         time: appointment.start_time.slice(0, 5),

@@ -15,9 +15,9 @@ export default function PrivacyPage() {
             </h2>
             <p className="mt-2">
               When you request an appointment, we collect your name, mobile
-              number, chosen doctor, date, time, and any note you provide.
-              Clinic owners also provide their email address and clinic details
-              when creating an account.
+              number, email address, chosen doctor, date, time, and any note you
+              provide. Clinic owners also provide their email address and clinic
+              details when creating an account.
             </p>
           </section>
           <section>
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             </p>
           </section>
           <p className="text-sm text-slate-500">
-            Last updated: 28 October 2026
+            Last updated: 25 November 2026
           </p>
         </div>
         <Link className="button-secondary mt-6" href="/find-doctor">

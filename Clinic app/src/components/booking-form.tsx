@@ -138,6 +138,18 @@ export function BookingForm({
         />
       </label>
       <label className="form-label">
+        Email address
+        <input
+          className="field"
+          name="patientEmail"
+          type="email"
+          autoComplete="email"
+          placeholder="patient@example.com"
+          maxLength={254}
+          required
+        />
+      </label>
+      <label className="form-label">
         Available date
         <select
           className="field"
@@ -179,8 +191,8 @@ export function BookingForm({
         {pending ? "Submitting request..." : "Request appointment"}
       </button>
       <p className="text-center text-xs text-slate-500">
-        Enter your mobile number like 0300-1234567. No account is required. By
-        submitting, you agree to our{" "}
+        No account is required. We use your phone and email only for appointment
+        updates. By submitting, you agree to our{" "}
         <Link className="font-semibold underline" href="/privacy">
           privacy notice
         </Link>

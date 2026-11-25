@@ -26,11 +26,14 @@ describe("environment schemas", () => {
       ...validPublicEnv,
       SUPABASE_SECRET_KEY: "sb_secret_example",
       WHATSAPP_TEST_MODE: "true",
+      RESEND_API_KEY: "re_example",
+      RESEND_FROM_EMAIL: "appointments@example.com",
       APP_URL: "http://localhost:3000",
     });
 
     expect(result.WHATSAPP_TEST_MODE).toBe(true);
     expect(result.WHATSAPP_TOKEN).toBeUndefined();
+    expect(result.RESEND_API_KEY).toBe("re_example");
   });
 
   it("rejects a missing server secret key", () => {

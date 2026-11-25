@@ -13,6 +13,8 @@ export function getServerEnv() {
     WHATSAPP_TOKEN: process.env.WHATSAPP_TOKEN || undefined,
     WHATSAPP_PHONE_NUMBER_ID: process.env.WHATSAPP_PHONE_NUMBER_ID || undefined,
     WHATSAPP_TEST_MODE: process.env.WHATSAPP_TEST_MODE,
+    RESEND_API_KEY: process.env.RESEND_API_KEY || undefined,
+    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL || undefined,
     APP_URL: process.env.APP_URL,
   });
 }

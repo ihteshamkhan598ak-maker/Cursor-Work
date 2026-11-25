@@ -3,6 +3,7 @@
 import { bookingSchema } from "@/lib/validations/booking";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { sendAppointmentNotice } from "@/lib/whatsapp/send";
+import { sendAppointmentEmails } from "@/lib/email/send";
 
 export type BookingState = { ok: boolean; message: string };
 
@@ -20,6 +21,7 @@ export async function bookAppointment(
     doctorId: formData.get("doctorId"),
     patientName: formData.get("patientName"),
     patientPhone: formData.get("patientPhone"),
+    patientEmail: formData.get("patientEmail"),
     appointmentDate: formData.get("appointmentDate"),
     startTime: formData.get("startTime"),
     note: formData.get("note") || undefined,
@@ -108,6 +110,7 @@ export async function bookAppointment(
       clinic_id: doctor.clinic_id,
       patient_name: parsed.data.patientName,
       patient_phone: parsed.data.patientPhone,
+      patient_email: parsed.data.patientEmail,
       appointment_date: parsed.data.appointmentDate,
       start_time: parsed.data.startTime,
       end_time: endTime,
@@ -131,6 +134,25 @@ export async function bookAppointment(
     phone: parsed.data.patientPhone,
     template: "booking_received",
     patientName: parsed.data.patientName,
+    doctorName: doctor.name,
+    date: parsed.data.appointmentDate,
+    time: parsed.data.startTime,
+  });
+  const { data: clinic } = await admin
+    .from("clinics")
+    .select("name, owner_id")
+    .eq("id", doctor.clinic_id)
+    .maybeSingle();
+  const owner = clinic?.owner_id
+    ? await admin.auth.admin.getUserById(clinic.owner_id)
+    : null;
+  await sendAppointmentEmails({
+    appointmentId: appointment.id,
+    template: "booking_received",
+    patientName: parsed.data.patientName,
+    patientEmail: parsed.data.patientEmail,
+    clinicEmail: owner?.data.user?.email,
+    clinicName: clinic?.name ?? "ClinicBook clinic",
     doctorName: doctor.name,
     date: parsed.data.appointmentDate,
     time: parsed.data.startTime,
